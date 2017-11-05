@@ -126,7 +126,7 @@ router.put('/:email/:id', (req, res, next) => {
             }
         } else if (text === null || text === "" || !text) {
             doc = {
-                $set: {"todos.$.state_of_todo": text}
+                $set: {"todos.$.state_of_todo": state}
             }
         }
         people.update({email: email, todos: {$elemMatch: {_id: id}}}, doc, (err, person) => {
