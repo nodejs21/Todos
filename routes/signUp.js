@@ -15,7 +15,7 @@ router.post('/', (req, res, next) => {
         return res.json(person);
     }).catch((err) => {
         if(err.name === "MongoError" && err.code === 11000) {
-            return res.send(`email "${body.email}" alredy exists!!`)
+            return res.status(300).send(`email "${body.email}" alredy exists!!`)
         }
         return res.status(500).send("error thrown from /routes/signUp.js/post!\n"+err);
     });
